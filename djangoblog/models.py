@@ -12,3 +12,13 @@ class Blog(models.Model):
 
     def was_published_recently(self):
         return self.posted >= timezone.now() - datetime.timedelta(days=1)
+
+
+class Comment(models.Model):
+    name = models.CharField(max_length=42)
+    text = models.TextField()
+    post = models.ForeignKey(Blog)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.text

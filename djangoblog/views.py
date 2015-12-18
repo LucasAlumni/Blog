@@ -19,6 +19,7 @@ class DetailView(generic.DetailView):
     model = Blog
     template_name = 'djangoblog/blog/detail.html'
 
+    
 
 
 def login(request):

@@ -3,5 +3,30 @@
 {% block title %}{{ blog.title }}{% endblock %}
 
 {% block content %}
-    {{ blog.body }}
+    {{ blog.body }}<br><br>
+    {% if blog.comment_set.all %}
+	<h2>Comments</h2>
+	<div class="comments">
+	    {% for comment in blog.comment_set.all %}
+	        <span>
+	           {{ comment.name }} le : {{ comment.created_on }}
+	        </span>
+	        <p>
+	            {{ comment.text }}
+	        </p>
+	    {% endfor %}
+	</div>
+	{% endif %}
+
+	<br />
+
+    <h2>Add Comment</h2>
+
+	<form action="" method="POST">
+	    {% csrf_token %}
+	    <table>
+	        {{ form.as_table }}
+	    </table>
+	    <input type="submit" name="submit" value="Submit" />
+	</form>
 {% endblock %}
