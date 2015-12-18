@@ -1,0 +1,7 @@
+{% extends 'djangoblog/base.html' %} 
+{% block head_title %}{{ blog.title }}{% endblock %}
+{% block title %}{{ blog.title }}{% endblock %}
+
+{% block content %}
+    {{ blog.body }}
+{% endblock %}

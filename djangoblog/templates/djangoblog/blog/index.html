@@ -1,0 +1,18 @@
+{% extends 'djangoblog/base.html' %}
+{% block title %}Welcome to my blog{% endblock %}
+
+{% block content %}
+
+	{% if last_post_list %}
+	    <ul>
+	    {% for post in last_post_list %}
+	        <li><a href="{% url 'djangoblog:detail' post.id %}">{{ post.title }}</a><i> le {{ post.posted }}</i><br><br>
+	        	<span>{{ post.body }}</span>
+	        </li><br><br>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>There are no posts.</p>
+	{% endif %}
+
+{% endblock %}
